@@ -4,7 +4,7 @@ import Header from "./header"
 
 export default function Index() {
   return (
-    <View>
+    <View className="flex-1">
       <Header />
 
       {/* Main Content */}

@@ -4,7 +4,7 @@ import "./global.css";
 
 export default function Header() {
   return (
-    <View className="flex-1 bg-white">
+    <View className="bg-white">
       {/* Header */}
       <View className="w-full py-4 px-6 bg-blue-600 flex-row justify-between items-center">
         {/* Title on the left */}
