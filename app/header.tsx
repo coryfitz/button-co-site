@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <View className="bg-white">
       {/* Header */}
-      <View className="w-full py-4 px-6 bg-blue-600 flex-row justify-between items-center">
+      <View className="w-full py-4 px-6 bg-red-600 flex-row justify-between items-center">
         {/* Title on the left */}
         <Link href="/">
             <Text className="text-white text-2xl font-bold">The Button Company</Text>
