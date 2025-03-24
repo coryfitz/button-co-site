@@ -1,8 +1,31 @@
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, Button } from "react-native";
 import "./global.css";
 import Header from "./header";
 
+import Clipboard from '@react-native-clipboard/clipboard';
+import SyntaxHighlighter from 'react-native-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/styles/hljs';
+
+
 export default function Tutorials() {
+
+  const CodeBlock = ({ code }: { code: string }) => (
+    <View style={{ margin: 10 }}>
+      <SyntaxHighlighter language="javascript" style={atomOneDark}>
+        {code}
+      </SyntaxHighlighter>
+      <Button title="Copy" onPress={() => Clipboard.setString(code)} />
+    </View>
+  );
+
+  const sampleCode = `
+  const greet = (name) => {
+    return \`Hello, \${name}!\`;
+  };
+
+  console.log(greet('world'));
+  `;
+
   return (
     <View className="flex-1 bg-green-950">
       <Header />
@@ -17,6 +40,7 @@ export default function Tutorials() {
             Maecenas nec massa vitae turpis imperdiet imperdiet. Proin dapibus nisi at turpis sagittis, vel ultrices velit tincidunt. 
             Vivamus nec leo nec lectus sodales mattis. Cras eu erat eu purus malesuada tincidunt.
           </Text>
+          <CodeBlock code={sampleCode} />
         </View>
 
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
