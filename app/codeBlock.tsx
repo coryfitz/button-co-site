@@ -1,18 +1,26 @@
-import { View, Button } from "react-native";
+import { View, Pressable, Text } from "react-native";
 import "./global.css";
 
 import Clipboard from '@react-native-clipboard/clipboard';
-import SyntaxHighlighter from 'react-native-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/styles/hljs';
+
+
+//rn syntax highlighter doesn't work with the rounded corners on RN web
 
 export default function CodeBlock({ code }: { code: string }) {
 
   return (
-    <View style={{ margin: 10 }}>
-      <SyntaxHighlighter language="javascript" style={atomOneDark}>
+    <View className="m-2">
+      <SyntaxHighlighter language="javascript" style={atomOneDark} className="rounded-xl bg-black p-4">
         {code}
       </SyntaxHighlighter>
-      <Button title="Copy" onPress={() => Clipboard.setString(code)} />
+      <Pressable
+  className="bg-blue-600 px-4 py-2 rounded-xl mt-2" onPress={() => Clipboard.setString(code)} >
+    <Text className="text-white text-center text-base font-medium">
+    Copy
+    </Text>
+    </Pressable>
     </View>
   );
 };
