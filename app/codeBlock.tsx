@@ -1,31 +1,36 @@
-import { View, Pressable, Text } from "react-native";
+import { View, Pressable, Image } from "react-native";
 import "./global.css";
 
 import Clipboard from '@react-native-clipboard/clipboard';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/styles/hljs';
 
-// rn syntax highlighter doesn't work with the rounded corners on RN web
-// the button doesn't do anything visually when you click on it
+// Import the SVG as an Image source
+import CopyIcon from '../assets/images/copy.svg';
 
 export default function CodeBlock({ code }: { code: string }) {
   return (
-    <View className="m-2 max-w-2xl w-full mx-auto">
+    <View className="relative m-2 max-w-md w-full mx-auto ">
+      {/* Copy Button in upper-right */}
+      <Pressable
+        onPress={() => Clipboard.setString(code)}
+        className="absolute top-2 right-2 p-2 rounded-full hover:bg-white/10 active:scale-95 transition"
+      >
+        <Image
+          source={CopyIcon}
+          className="w-5 h-5 opacity-80"
+          resizeMode="contain"
+        />
+      </Pressable>
+
       <SyntaxHighlighter
         language="javascript"
         style={atomOneDark}
-        className="rounded-xl bg-black p-4"
+        className="rounded-lg p-4 pt-10"
       >
         {code}
       </SyntaxHighlighter>
-      <Pressable 
-        className="bg-blue-600 px-4 py-2 rounded-xl mt-2 pressable:bg-blue-700 active:opacity-80"
-        onPress={() => Clipboard.setString(code)}
-      >
-        <Text className="text-white text-center text-base font-medium">
-          Copy
-        </Text>
-      </Pressable>
     </View>
   );
 }
+
