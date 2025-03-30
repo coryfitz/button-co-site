@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/styles/hljs';
 
 // Import the SVG as an Image source
-import CopyIcon from '../assets/images/copy.svg';
+import CopyIcon from '../assets/images/copy.png';
 
 export default function CodeBlock({ code }: { code: string }) {
   return (
