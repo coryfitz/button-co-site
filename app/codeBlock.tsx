@@ -14,7 +14,7 @@ export default function CodeBlock({ code }: { code: string }) {
       {/* Copy Button in upper-right */}
       <Pressable
         onPress={() => Clipboard.setString(code)}
-        className="absolute top-2 right-2 z-10 p-2 rounded-full hover:bg-white/10 active:scale-95 transition"
+        className="absolute top-2 right-2 z-10 p-2 rounded-full active:bg-white/10 transition"
       >
         <Image
           source={CopyIcon}
