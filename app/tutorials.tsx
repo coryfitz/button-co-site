@@ -27,7 +27,7 @@ export default function Tutorials() {
             Maecenas nec massa vitae turpis imperdiet imperdiet. Proin dapibus nisi at turpis sagittis, vel ultrices velit tincidunt. 
             Vivamus nec leo nec lectus sodales mattis. Cras eu erat eu purus malesuada tincidunt.
           </Text>
-          <CodeBlock code={sampleCode} />
+          <CodeBlock code={sampleCode} language='javascript' />
         </View>
 
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
@@ -36,6 +36,7 @@ export default function Tutorials() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod lorem vitae neque convallis, at laoreet justo dapibus. 
             Integer vel enim vitae elit facilisis ullamcorper. Suspendisse nec metus nec lorem sagittis finibus.
           </Text>
+          <CodeBlock code={`print("Hello!")`}  language='python' />
         </View>
 
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">

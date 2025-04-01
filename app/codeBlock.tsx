@@ -8,9 +8,14 @@ import { atomOneDark } from 'react-syntax-highlighter/styles/hljs';
 // Import the SVG as an Image source
 import CopyIcon from '../assets/images/copy.png';
 
-export default function CodeBlock({ code }: { code: string }) {
+interface CodeBlockProps {
+  code: string;
+  language?: string; // Optional with default fallback
+}
+
+export default function CodeBlock({ code, language = "javascript" }: CodeBlockProps) {
   return (
-    <View className="relative m-2 max-w-md w-full mx-auto ">
+    <View className="relative m-2 max-w-md w-full mx-auto">
       {/* Copy Button in upper-right */}
       <Pressable
         onPress={() => Clipboard.setString(code)}
@@ -24,7 +29,7 @@ export default function CodeBlock({ code }: { code: string }) {
       </Pressable>
 
       <SyntaxHighlighter
-        language="javascript"
+        language={language}
         style={atomOneDark}
         className="rounded-lg p-4 pt-10"
       >
@@ -33,4 +38,3 @@ export default function CodeBlock({ code }: { code: string }) {
     </View>
   );
 }
-
