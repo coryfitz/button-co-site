@@ -16,17 +16,18 @@ interface CodeBlockProps {
 export default function CodeBlock({ code, language = "javascript" }: CodeBlockProps) {
   return (
     <View className="relative m-2 max-w-md w-full mx-auto">
-      {/* Copy Button in upper-right */}
-      <Pressable
-        onPress={() => Clipboard.setString(code)}
-        className="absolute top-2 right-2 z-10 p-2 rounded-full active:bg-white/10 active:scale-105 md:hover:scale-105 transition"
-      >
-        <Image
-          source={CopyIcon}
-          className="w-5 h-5 opacity-80"
-          resizeMode="contain"
-        />
-      </Pressable>
+      <View className="absolute top-0 right-0 z-10 p-2">
+        <Pressable
+          onPress={() => Clipboard.setString(code)}
+          className="rounded-full active:bg-white/10 active:scale-105 md:hover:scale-105 transition"
+        >
+          <Image
+            source={CopyIcon}
+            className="w-5 h-5 opacity-80"
+            resizeMode="contain"
+          />
+        </Pressable>
+      </View>
 
       <SyntaxHighlighter
         language={language}
@@ -36,5 +37,6 @@ export default function CodeBlock({ code, language = "javascript" }: CodeBlockPr
         {code}
       </SyntaxHighlighter>
     </View>
+
   );
 }
