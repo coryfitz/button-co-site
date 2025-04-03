@@ -37,13 +37,21 @@ export default function Tutorials() {
   const [tab2, setTab2] = useState("python");
   const [tab3, setTab3] = useState("python");
 
-  const sampleCode = `
-  const greet = (name) => {
-    return \`Hello, \${name}!\`;
-  };
-
-  console.log(greet('world'));
+  const pythonCode = `
+  def hello_world():
+    print('Hello, world!')
   `;
+
+  const rustCode = `
+  fn say_hello() {
+    println!("Hello, world!");
+  }
+
+  fn main() {
+      say_hello();
+  }
+    `;
+
 
   return (
     <View className="flex-1 bg-green-950">
@@ -59,12 +67,17 @@ export default function Tutorials() {
           {tab1 === "python" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
-              <CodeBlock code={sampleCode} language="javascript" />
+              <CodeBlock code={pythonCode} language="python" />
             </>
           ) : (
-            <Text className="text-black italic">Rust version coming soon...</Text>
+            <>
+              <Text className="text-black text-base leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Text>
+              <CodeBlock code={rustCode} language="rust" />
+            </>
           )}
         </View>
 
@@ -77,12 +90,17 @@ export default function Tutorials() {
           {tab2 === "python" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
-              <CodeBlock code={`print("Hello!")`} language="python" />
+              <CodeBlock code={pythonCode} language="python" />
             </>
           ) : (
-            <Text className="text-black italic">Rust version coming soon...</Text>
+            <>
+              <Text className="text-black text-base leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Text>
+              <CodeBlock code={rustCode} language="rust" />
+            </>
           )}
         </View>
 
@@ -94,7 +112,7 @@ export default function Tutorials() {
           <Tabs currentTab={tab3} setCurrentTab={setTab3} />
           {tab3 === "python" ? (
             <Text className="text-black text-base leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Text>
           ) : (
             <Text className="text-black italic">Rust version coming soon...</Text>
