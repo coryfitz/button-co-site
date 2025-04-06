@@ -61,7 +61,7 @@ export default function Tutorials() {
         {/* Card 1 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
-            Getting Started with React Native
+            Connecting The Button to Home Assistant
           </Text>
           <Tabs currentTab={tab1} setCurrentTab={setTab1} />
           {tab1 === "python" ? (
