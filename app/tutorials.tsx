@@ -84,7 +84,7 @@ export default function Tutorials() {
         {/* Card 2 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
-            Understanding Components
+            Connecting The Button to a smart plug
           </Text>
           <Tabs currentTab={tab2} setCurrentTab={setTab2} />
           {tab2 === "python" ? (
