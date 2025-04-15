@@ -15,7 +15,9 @@ interface CodeBlockProps {
 
 export default function CodeBlock({ code, language = "javascript" }: CodeBlockProps) {
   return (
-    <View className="relative m-2 w-fit min-w-[24rem] max-w-screen-md mx-auto overflow-auto">
+    <View className="relative m-2 w-fit md:min-w-[24rem] max-w-[80vw] sm:max-w-[30rem] md:max-w-[40rem] mx-auto overflow-auto">
+
+
       <View className="absolute top-0 right-0 z-10 p-2">
         <Pressable
           onPress={() => Clipboard.setString(code)}
