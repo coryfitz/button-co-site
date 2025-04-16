@@ -69,8 +69,8 @@ export default function Tutorials() {
           <Text className="text-center text-2xl font-bold text-black mb-2">
             Connecting The Button to Home Assistant
           </Text>
-          <Tabs currentTab={tab1} setCurrentTab={setTab1} tabs={["Python", "Rust"]}/>
-          {tab1 === "Python" ? (
+          <Tabs currentTab={tab1} setCurrentTab={setTab1} tabs={["YAML"]}/>
+          {tab1 === "YAML" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
                 Assumption: you already have Home Assistant running on a Raspberry Pi or another device
@@ -82,7 +82,22 @@ export default function Tutorials() {
                 <br></br>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
-              <CodeBlock code={pythonCode} language="python" />
+              <CodeBlock code={
+                `binary_sensor:
+                  - platform: gpio
+                    pin:
+                      number: 0  # GPIO pin connected to the button
+                      mode: INPUT_PULLDOWN  # Use the internal pull-down resistor
+                    name: "Push Button"
+                    id: push_button
+                    on_press:
+                      - homeassistant.event:
+                          event: esphome.push_button_pressed
+                    on_release:
+                      - homeassistant.event:
+                          event: esphome.push_button_released
+                `
+              } language="yaml" />
             </>
           ) : (
             <>
