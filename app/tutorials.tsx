@@ -39,7 +39,7 @@ function Tabs({ currentTab, setCurrentTab, tabs }) {
 }
 
 export default function Tutorials() {
-  const [tab1, setTab1] = useState("Python");
+  const [tab1, setTab1] = useState("YAML");
   const [tab2, setTab2] = useState("Python");
   const [tab3, setTab3] = useState("Python");
 
