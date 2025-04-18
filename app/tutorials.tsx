@@ -75,10 +75,14 @@ export default function Tutorials() {
               <Text className="text-black text-base leading-relaxed">
                 Assumption: you already have Home Assistant running on a Raspberry Pi or another device
                 <br></br>
+                (to install Home Assistant on a Raspberry Pi follow the instructions here: https://www.home-assistant.io/installation/raspberrypi/)
+                <br></br>
                 <br></br>
                 We will use ESPHome to connect to The Button. ESPHome is a Home Assistant addon that lets us use a YAML file to connect a device to Home Assistant.
                 <br></br>
+                <br></br>
                 1. Set up ESPHome on your Home Assistant
+                <br></br>
                 <br></br>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
