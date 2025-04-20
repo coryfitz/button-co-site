@@ -85,6 +85,14 @@ export default function Tutorials() {
                 <br></br>
                 <br></br>
                 Click the button on this page: https://esphome.io/guides/getting_started_hassio
+                <br></br>
+                <br></br>
+                Then click the install button on your Home Assistant screen
+                <br></br>
+                <br></br>
+                After it has installed, toggle on "Show in sidebar"
+
+
               </Text>
               <CodeBlock code={
                 `binary_sensor:
