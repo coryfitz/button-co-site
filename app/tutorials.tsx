@@ -91,6 +91,11 @@ export default function Tutorials() {
                 <br></br>
                 <br></br>
                 After it has installed, toggle on "Show in sidebar"
+                <br></br>
+                <br></br>
+                2. Connect your Button to ESPHome
+
+
 
 
               </Text>
