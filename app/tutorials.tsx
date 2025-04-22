@@ -96,7 +96,7 @@ export default function Tutorials() {
                 2. Connect your Button to ESPHome
                 <br></br>
                 <br></br>
-                Go to https://web.esphome.io/?pico
+                Go to https://web.esphome.io/?pico and click on "First Time Setup"
 
 
 
