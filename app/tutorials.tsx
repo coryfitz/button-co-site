@@ -94,6 +94,9 @@ export default function Tutorials() {
                 <br></br>
                 <br></br>
                 2. Connect your Button to ESPHome
+                <br></br>
+                <br></br>
+                Go to https://web.esphome.io/?pico
 
 
 
