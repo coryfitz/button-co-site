@@ -97,6 +97,8 @@ export default function Tutorials() {
                 <br></br>
                 <br></br>
                 Go to https://web.esphome.io/?pico and click on "First Time Setup"
+                <br></br>
+                <br></br>
 
 
 
