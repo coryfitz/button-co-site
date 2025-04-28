@@ -99,6 +99,62 @@ export default function Tutorials() {
                 Go to https://web.esphome.io/?pico and click on "First Time Setup"
                 <br></br>
                 <br></br>
+                Follow the instructions to load the ESPHome file onto your Pico
+                <br></br>
+                <br></br>
+
+                (is this part necessary?)
+
+                Continue then Connect
+                <br></br>
+                <br></br>
+                Connect to Wifi then enter your wifi details
+
+                <br></br>
+                <br></br>
+                Close
+                Unplug and replug device
+                Back in ESPHome Builder in your Home Assistant, you should see "Discovered 1 device"
+                Click Show and then Take Control
+
+
+
+                Maybe unplug and replug Pico?
+                <br></br>
+                <br></br>
+                Click "connect"
+                <br></br>
+                <br></br>
+                Choose your Pico W device and click connect
+                <br></br>
+                <br></br>
+                Click "Prepare for First Use" and then "Install"
+
+
+
+
+
+
+
+                //ignore all of this?
+
+                Go to ESPHome Builder on the left panel of your Home Assistant screen
+                <br></br>
+                <br></br>
+                Click "+ New Device"
+                <br></br>
+                <br></br>
+                Open ESPHome Web
+                <br></br>
+                <br></br>
+                Click "connect"
+                <br></br>
+                <br></br>
+                Choose your Pico W device and click connect
+                <br></br>
+                <br></br>
+                Click "Prepare for First Use" and then "Install"
+
 
 
 
