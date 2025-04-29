@@ -93,6 +93,9 @@ export default function Tutorials() {
                 After it has installed, toggle on "Show in sidebar"
                 <br></br>
                 <br></br>
+                Click on ESPHome Builder in the sidebar and press Start Addon
+                <br></br>
+                <br></br>
                 2. Connect your Button to ESPHome
                 <br></br>
                 <br></br>
@@ -102,47 +105,64 @@ export default function Tutorials() {
                 Follow the instructions to load the ESPHome file onto your Pico
                 <br></br>
                 <br></br>
-                Do not click Continue - return to your Home Assistant screen
-                Back in ESPHome Builder in your Home Assistant, you should see "Discovered 1 device"
+                Do not click Continue - return to your Home Assistant screen - ESPHome Builder
+                <br></br>
+                <br></br>
+                Click Add Device - Open ESPHome Web
+                <br></br>
+                <br></br>
+                Click Connect
+                <br></br>
+                <br></br>
+                Return to ESPHome Builder in your Home Assistant, you should see "Discovered 1 device"
+                <br></br>
+                <br></br>
                 Reload if it isn't there yet
+                <br></br>
+                <br></br>
                 Click Show and then Take Control, then Take Control again
+                <br></br>
+                <br></br>
                 Skip installing configuration on the device, click Close
+                <br></br>
+                <br></br>
                 Click Edit on the entry for your device
-                Enter wifi details - click save then exit
-
-                Manual
-                UF2 factory format
-
-
-
-
-
-
-                
-
-
-
-                //ignore all of this?
-
-                Go to ESPHome Builder on the left panel of your Home Assistant screen
                 <br></br>
                 <br></br>
-                Click "+ New Device"
+                Enter YAML config - click save then exit
                 <br></br>
                 <br></br>
-                Open ESPHome Web
+                Click the three dots and validate to ensure there are no issues with the config
                 <br></br>
                 <br></br>
-                Click "connect"
+                Click Install
                 <br></br>
                 <br></br>
-                Choose your Pico W device and click connect
+                Select Manual Download
                 <br></br>
                 <br></br>
-                Click "Prepare for First Use" and then "Install"
-
-
-
+                When the file is ready, click Download project
+                <br></br>
+                <br></br>
+                Select UF2 factory format
+                <br></br>
+                <br></br>
+                Bootsel - upload the file
+                <br></br>
+                <br></br>
+                Unplug the device from your computer and plug it into a power outlet so that we can ensure it's connecting via wifi
+                <br></br>
+                <br></br>
+                Home Assistant - Settings - Devices and Services
+                <br></br>
+                <br></br>
+                You should see the device under "Discovered" - click Add - Submit - (optional: add to area) - Finish
+                <br></br>
+                <br></br>
+                Find the device in your Home Assistant overview (click on the side panel)
+                <br></br>
+                <br></br>
+                Check that the binary sensor toggles from off to on when the button is pressed
 
               </Text>
               <CodeBlock code={
