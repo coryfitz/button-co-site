@@ -166,22 +166,44 @@ export default function Tutorials() {
 
               </Text>
               <CodeBlock code={
-                `binary_sensor:
-                  - platform: gpio
-                    pin:
-                      number: 0  # GPIO pin connected to the button
-                      mode: INPUT_PULLDOWN  # Use the internal pull-down resistor
-                    name: "Push Button"
-                    id: push_button
-                    on_press:
-                      - homeassistant.event:
-                          event: esphome.push_button_pressed
-                    on_release:
-                      - homeassistant.event:
-                          event: esphome.push_button_released
+                `
+esphome:
+  name: esphome-web-9c0378
+  friendly_name: Button 1
+  min_version: 2024.11.0
+  name_add_mac_suffix: false
+
+rp2040:
+  board: rpipicow
+
+# Enable logging
+logger:
+
+# Enable Home Assistant APIß
+api:
+
+# Allow Over-The-Air updates
+ota:
+- platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      # GPIO pin connected to the button
+      number: 0
+      # Use the internal pull-down resistor
+      mode: INPUT_PULLDOWN
+    name: "Push Button"
+    id: push_button
                 `
               } language="yaml" />
             </>
+
+
           ) : (
             <>
               <Text className="text-black text-base leading-relaxed">
