@@ -129,42 +129,11 @@ export default function Tutorials() {
                 Click Edit on the entry for your device
                 <br></br>
                 <br></br>
-                Enter YAML config - click save then exit
+                Enter the following YAML config - click save then exit
                 <br></br>
                 <br></br>
-                Click the three dots and validate to ensure there are no issues with the config
-                <br></br>
-                <br></br>
-                Click Install
-                <br></br>
-                <br></br>
-                Select Manual Download
-                <br></br>
-                <br></br>
-                When the file is ready, click Download project
-                <br></br>
-                <br></br>
-                Select UF2 factory format
-                <br></br>
-                <br></br>
-                Bootsel - upload the file
-                <br></br>
-                <br></br>
-                Unplug the device from your computer and plug it into a power outlet so that we can ensure it's connecting via wifi
-                <br></br>
-                <br></br>
-                Home Assistant - Settings - Devices and Services
-                <br></br>
-                <br></br>
-                You should see the device under "Discovered" - click Add - Submit - (optional: add to area) - Finish
-                <br></br>
-                <br></br>
-                Find the device in your Home Assistant overview (click on the side panel)
-                <br></br>
-                <br></br>
-                Check that the binary sensor toggles from off to on when the button is pressed
-
               </Text>
+
               <CodeBlock code={
                 `
 esphome:
@@ -201,7 +170,42 @@ binary_sensor:
     id: push_button
                 `
               } language="yaml" />
-            </>
+            
+<Text>
+Click the three dots and validate to ensure there are no issues with the config
+<br></br>
+<br></br>
+Click Install
+<br></br>
+<br></br>
+Select Manual Download
+<br></br>
+<br></br>
+When the file is ready, click Download project
+<br></br>
+<br></br>
+Select UF2 factory format
+<br></br>
+<br></br>
+Bootsel - upload the file
+<br></br>
+<br></br>
+Unplug the device from your computer and plug it into a power outlet so that we can ensure it's connecting via wifi
+<br></br>
+<br></br>
+Home Assistant - Settings - Devices and Services
+<br></br>
+<br></br>
+You should see the device under "Discovered" - click Add - Submit - (optional: add to area) - Finish
+<br></br>
+<br></br>
+Find the device in your Home Assistant overview (click on the side panel)
+<br></br>
+<br></br>
+Check that the binary sensor toggles from off to on when the button is pressed
+
+</Text>
+</>
 
 
           ) : (
