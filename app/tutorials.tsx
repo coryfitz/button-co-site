@@ -73,7 +73,7 @@ export default function Tutorials() {
           {tab1 === "YAML" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-                Assumption: you already have Home Assistant running on a Raspberry Pi or another device
+                Requirements: you must already have Home Assistant running on a Raspberry Pi or another device
                 <br></br>
                 (to install Home Assistant on a Raspberry Pi follow the instructions here: https://www.home-assistant.io/installation/raspberrypi/)
                 <br></br>
