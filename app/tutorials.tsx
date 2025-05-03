@@ -172,6 +172,8 @@ binary_sensor:
               } language="yaml" />
             
 <Text>
+<br></br>
+<br></br>
 Click the three dots and validate to ensure there are no issues with the config
 <br></br>
 <br></br>
