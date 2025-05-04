@@ -132,6 +132,7 @@ export default function Tutorials() {
                 Enter the following YAML config - click save then exit
                 <br></br>
                 <br></br>
+                <br></br>
               </Text>
 
               <CodeBlock code={
