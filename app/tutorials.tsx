@@ -208,7 +208,11 @@ Check that the binary sensor toggles from off to on when the button is pressed
 <br></br>
 <br></br>
 Add the Hue integration to HA by following the link here:
+<br></br>
+<br></br>
 https://www.home-assistant.io/integrations/hue/
+<br></br>
+<br></br>
 
 </Text>
 </>
