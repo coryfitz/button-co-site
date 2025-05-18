@@ -132,11 +132,6 @@ export default function Tutorials() {
                 Enter the following YAML config - click save then exit
                 <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
               </Text>
 
               <CodeBlock code={
@@ -212,8 +207,8 @@ Find the device in your Home Assistant overview (click on the side panel)
 Check that the binary sensor toggles from off to on when the button is pressed
 <br></br>
 <br></br>
-<br></br>
-<br></br>
+Add the Hue integration to HA by following the link here:
+https://www.home-assistant.io/integrations/hue/
 
 </Text>
 </>
