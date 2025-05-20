@@ -207,17 +207,6 @@ Find the device in your Home Assistant overview (click on the side panel)
 Check that the binary sensor toggles from off to on when the button is pressed
 <br></br>
 <br></br>
-Add the Hue integration to HA by following the link here:
-<br></br>
-<br></br>
-https://www.home-assistant.io/integrations/hue/
-<br></br>
-<br></br>
-
-<br></br>
-<br></br>
-<br></br>
-<br></br>
 
 </Text>
 </>
@@ -236,7 +225,7 @@ https://www.home-assistant.io/integrations/hue/
         {/* Card 2 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
-            Connecting The Button to a smart plug
+            Connecting Home Assistant to Hue Bulbs
           </Text>
           <Tabs currentTab={tab2} setCurrentTab={setTab2} tabs={["Python", "Rust", "YAML"]}/>
           {
@@ -258,7 +247,10 @@ https://www.home-assistant.io/integrations/hue/
           : tab2 === "YAML" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Add the Hue integration to HA by following the link here:
+              <br></br>
+              <br></br>
+              https://www.home-assistant.io/integrations/hue/
               </Text>
               <CodeBlock code={
                 `binary_sensor:
