@@ -208,9 +208,6 @@ Check that the binary sensor toggles from off to on when the button is pressed
 <br></br>
 <br></br>
 
-<br></br>
-<br></br>
-
 </Text>
 </>
 
