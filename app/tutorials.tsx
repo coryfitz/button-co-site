@@ -40,7 +40,7 @@ function Tabs({ currentTab, setCurrentTab, tabs }) {
 
 export default function Tutorials() {
   const [tab1, setTab1] = useState("YAML");
-  const [tab2, setTab2] = useState("Python");
+  const [tab2, setTab2] = useState("MicroPython");
   const [tab3, setTab3] = useState("Python");
 
   const pythonCode = `
@@ -67,7 +67,7 @@ export default function Tutorials() {
         {/* Card 1 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
-            Connecting The Button to Home Assistant
+            Using ESPHome to Connect to Home Assistant
           </Text>
           <Tabs currentTab={tab1} setCurrentTab={setTab1} tabs={["YAML"]}/>
           {tab1 === "YAML" ? (
@@ -208,9 +208,6 @@ Check that the binary sensor toggles from off to on when the button is pressed
 <br></br>
 <br></br>
 
-<br></br>
-<br></br>
-
 </Text>
 </>
 
@@ -228,50 +225,64 @@ Check that the binary sensor toggles from off to on when the button is pressed
         {/* Card 2 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
-            Connecting Home Assistant to Hue Bulbs
+          Using umqtt to Connect to Home Assistant
           </Text>
-          <Tabs currentTab={tab2} setCurrentTab={setTab2} tabs={["Python", "Rust", "YAML"]}/>
+          <Tabs currentTab={tab2} setCurrentTab={setTab2} tabs={["MicroPython"]}/>
           {
-          tab2 === "Python" ? (
+          tab2 === "MicroPython" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
-              <CodeBlock code={pythonCode} language="python" />
+              <CodeBlock code={`
+import network
+import time
+from machine import Pin
+from umqtt.simple import MQTTClient
+
+# ---- Configuration ----
+WIFI_SSID = "Your_SSID"
+WIFI_PASSWORD = "Your_Password"
+
+MQTT_BROKER = "192.168.1.10"  # IP of your Home Assistant or MQTT broker
+MQTT_TOPIC = b"home/button_pico"
+CLIENT_ID = b"pico-button"
+
+# ---- Setup ----
+button = Pin(0, Pin.IN, Pin.PULL_UP)
+
+def connect_wifi():
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+
+    while not wlan.isconnected():
+        print("Connecting to WiFi...")
+        time.sleep(1)
+    print("Connected to WiFi:", wlan.ifconfig())
+
+def send_mqtt_message():
+    client = MQTTClient(CLIENT_ID, MQTT_BROKER)
+    client.connect()
+    client.publish(MQTT_TOPIC, b"pressed")
+    client.disconnect()
+    print("MQTT message sent!")
+
+# ---- Main Loop ----
+connect_wifi()
+
+last_state = 1
+while True:
+    current_state = button.value()
+    if last_state == 1 and current_state == 0:  # Button pressed
+        send_mqtt_message()
+        time.sleep(0.5)  # Debounce delay
+    last_state = current_state
+    time.sleep(0.01)
+
+                `} language="python" />
             </>
-          ) : tab2 === "Rust" ? (
-            <>
-              <Text className="text-black text-base leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Text>
-              <CodeBlock code={rustCode} language="rust" />
-            </>
-          ) 
-          : tab2 === "YAML" ? (
-            <>
-              <Text className="text-black text-base leading-relaxed">
-              Add the Hue integration to HA by following the link here:
-              <br></br>
-              <br></br>
-              https://www.home-assistant.io/integrations/hue/
-              </Text>
-              <CodeBlock code={
-                `binary_sensor:
-                  - platform: gpio
-                    pin:
-                      number: 0  # GPIO pin connected to the button
-                      mode: INPUT_PULLDOWN  # Use the internal pull-down resistor
-                    name: "Push Button"
-                    id: push_button
-                    on_press:
-                      - homeassistant.event:
-                          event: esphome.push_button_pressed
-                    on_release:
-                      - homeassistant.event:
-                          event: esphome.push_button_released
-                `
-              } language="yaml" />
-            </>
+
           ): (
             // Optional fallback if none match
             <Text className="text-black">Select a tab.</Text>
