@@ -232,7 +232,7 @@ Check that the binary sensor toggles from off to on when the button is pressed
           tab2 === "MicroPython" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-              Enter the following code
+              Enter the following MicroPython code
               </Text>
               <CodeBlock code={`
 import network
