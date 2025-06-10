@@ -232,7 +232,22 @@ Check that the binary sensor toggles from off to on when the button is pressed
           tab2 === "MicroPython" ? (
             <>
               <Text className="text-black text-base leading-relaxed">
-              Enter the following MicroPython code
+
+              1. Install MicroPython by following instructions here: https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
+              <br></br>
+              (The Button uses a Pico W board, not a Pico 2 or Pico 2 W)
+              <br></br>
+              <br></br>
+              2. In the Thonny code editor, in the bottom right, select "MicroPython (Raspberry Pi Pico)"
+              <br></br>
+              <br></br>
+              3. Use Thonny to enter the following MicroPython code
+              <br></br>
+              WIFI_SSID and WIFI_PASSWORD are your wifi network's name and password
+              <br></br>
+              If you don't already have your Home Assistant's IP Address, you can add the following integration: https://www.home-assistant.io/integrations/local_ip/
+              <br></br>
+
               </Text>
               <CodeBlock code={`
 import network
