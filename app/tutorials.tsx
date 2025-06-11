@@ -233,6 +233,18 @@ Check that the binary sensor toggles from off to on when the button is pressed
             <>
               <Text className="text-black text-base leading-relaxed">
 
+              Install MQTT on your Home Assistant if you don't already: https://www.home-assistant.io/integrations/mqtt/
+              <br></br>
+              Manually enter the MQTT Broker connection details
+              <br></br>
+              <br></br>
+
+              Click on your name in the bottom left of Home Assistant
+              Toggle on advanced mode
+              Then, Settings - People - Users
+
+
+
               1. Install MicroPython by following instructions here: https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
               <br></br>
               (The Button uses a Pico W board, not a Pico 2 or Pico 2 W)
@@ -252,48 +264,108 @@ Check that the binary sensor toggles from off to on when the button is pressed
               <CodeBlock code={`
 import network
 import time
-from machine import Pin
-from umqtt.simple import MQTTClient
+import json
+import mip
+from machine import Pin, ADC
 
-# ---- Configuration ----
+# WiFi credentials
 WIFI_SSID = "Your_SSID"
 WIFI_PASSWORD = "Your_Password"
 
-MQTT_BROKER = "192.168.1.10"  # IP of your Home Assistant or MQTT broker
-MQTT_TOPIC = b"home/button_pico"
-CLIENT_ID = b"pico-button"
+# MQTT settings
+MQTT_BROKER = "10.0.1.9"  # Your Home Assistant IP
+MQTT_PORT = 1883
+MQTT_CLIENT_ID = "pico_sensor"
+MQTT_USER = "mqtt-user"  # If authentication is enabled
+MQTT_PASSWORD = "1052142Ij"
 
-# ---- Setup ----
-button = Pin(0, Pin.IN, Pin.PULL_UP)
-
+# Connect to WiFi
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
     wlan.connect(WIFI_SSID, WIFI_PASSWORD)
-
+    
     while not wlan.isconnected():
         print("Connecting to WiFi...")
         time.sleep(1)
-    print("Connected to WiFi:", wlan.ifconfig())
+    
+    print(f"Connected to WiFi: {wlan.ifconfig()}")
 
-def send_mqtt_message():
-    client = MQTTClient(CLIENT_ID, MQTT_BROKER)
+# MQTT connection
+def connect_mqtt():
+    from umqtt.simple import MQTTClient
+    client = MQTTClient(MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, MQTT_USER, MQTT_PASSWORD)
     client.connect()
-    client.publish(MQTT_TOPIC, b"pressed")
-    client.disconnect()
-    print("MQTT message sent!")
+    print("Connected to MQTT broker")
+    return client
 
-# ---- Main Loop ----
-connect_wifi()
+from machine import Pin
+import time
 
-last_state = 1
-while True:
-    current_state = button.value()
-    if last_state == 1 and current_state == 0:  # Button pressed
-        send_mqtt_message()
-        time.sleep(0.5)  # Debounce delay
-    last_state = current_state
-    time.sleep(0.01)
+# Add these topic definitions at the top with your other constants
+TOPIC_BUTTON = "homeassistant/binary_sensor/pico/button/state"
+TOPIC_CONFIG = "homeassistant/binary_sensor/pico_button/config"
+
+# Update the discovery config function
+def publish_discovery_config(client):
+    config = {
+        "name": "Pico Button",
+        "device_class": "button",  # or "door", "window", "motion", etc.
+        "state_topic": TOPIC_BUTTON,
+        "payload_on": "ON",
+        "payload_off": "OFF",
+        "unique_id": "pico_button_01",
+        "device": {
+            "identifiers": ["pico_sensor_01"],
+            "name": "Raspberry Pi Pico Sensor",
+            "model": "Pico",
+            "manufacturer": "Raspberry Pi Foundation"
+        }
+    }
+    client.publish(TOPIC_CONFIG, json.dumps(config), retain=True)
+    print("Published button discovery config")
+
+# Main loop
+def main():
+    connect_wifi()
+    
+    client = connect_mqtt()
+    
+    # Publish discovery configuration
+    publish_discovery_config(client)
+    
+    # Setup button on GPIO pin (change pin number as needed)
+    button = Pin(0, Pin.IN, Pin.PULL_UP)  # Using pin 15 with internal pull-up
+    last_button_state = button.value()
+    
+    while True:
+        try:
+            # Read button state (inverted because of pull-up resistor)
+            current_button_state = button.value()
+            
+            # Check if button state changed
+            if current_button_state != last_button_state:
+                if current_button_state == 0:  # Button pressed (pulled low)
+                    button_status = "ON"
+                    print("Button pressed!")
+                else:  # Button released
+                    button_status = "OFF"
+                    print("Button released!")
+                
+                # Publish to MQTT
+                client.publish(TOPIC_BUTTON, button_status)
+                print(f"Published button state: {button_status}")
+                
+                last_button_state = current_button_state
+            
+            time.sleep(0.1)  # Check every 100ms for responsiveness
+            
+        except Exception as e:
+            print(f"Error: {e}")
+            time.sleep(1)
+
+if __name__ == "__main__":
+    main()
 
                 `} language="python" />
             </>
