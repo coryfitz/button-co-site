@@ -310,7 +310,6 @@ TOPIC_CONFIG = "homeassistant/binary_sensor/pico_button/config"
 def publish_discovery_config(client):
     config = {
         "name": "Pico Button",
-        "device_class": "button",  # or "door", "window", "motion", etc.
         "state_topic": TOPIC_BUTTON,
         "payload_on": "ON",
         "payload_off": "OFF",
