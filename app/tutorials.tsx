@@ -324,39 +324,41 @@ def publish_discovery_config(client):
     client.publish(TOPIC_CONFIG, json.dumps(config), retain=True)
     print("Published button discovery config")
 
-# Main loop
 def main():
     connect_wifi()
     
     client = connect_mqtt()
     
-    # Publish discovery configuration
     publish_discovery_config(client)
     
-    # Setup button on GPIO pin (change pin number as needed)
-    button = Pin(0, Pin.IN, Pin.PULL_UP)  # Using pin 15 with internal pull-up
+    button = Pin(0, Pin.IN, Pin.PULL_UP)
     last_button_state = button.value()
+    
+    toggle_state = False
     
     while True:
         try:
-            # Read button state (inverted because of pull-up resistor)
             current_button_state = button.value()
             
-            # Check if button state changed
-            if current_button_state != last_button_state:
-                if current_button_state == 0:  # Button pressed (pulled low)
-                    button_status = "ON"
-                    print("Button pressed!")
-                else:  # Button released
-                    button_status = "OFF"
-                    print("Button released!")
+            if last_button_state == 1 and current_button_state == 0:
+                print("Button pressed!")
                 
-                # Publish to MQTT
+            elif last_button_state == 0 and current_button_state == 1:
+                print("Button released!")
+                
+                toggle_state = not toggle_state
+                
+                if toggle_state:
+                    button_status = "ON"
+                    print("Toggle state: ON")
+                else:
+                    button_status = "OFF"
+                    print("Toggle state: OFF")
+                
                 client.publish(TOPIC_BUTTON, button_status)
                 print(f"Published button state: {button_status}")
-                
-                last_button_state = current_button_state
             
+            last_button_state = current_button_state
             time.sleep(0.1)  # Check every 100ms for responsiveness
             
         except Exception as e:
