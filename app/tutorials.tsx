@@ -369,6 +369,7 @@ if __name__ == "__main__":
     main()
 
                 `} language="python" />
+                <Text>When you run the code, your Pico should connect to your Home Assistant</Text>
             </>
 
           ): (
