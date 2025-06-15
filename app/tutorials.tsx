@@ -277,7 +277,7 @@ MQTT_BROKER = "10.0.1.9"  # Your Home Assistant IP
 MQTT_PORT = 1883
 MQTT_CLIENT_ID = "pico_sensor"
 MQTT_USER = "mqtt-user"  # If authentication is enabled
-MQTT_PASSWORD = "1052142Ij"
+MQTT_PASSWORD = "Your_Password"
 
 # Connect to WiFi
 def connect_wifi():
