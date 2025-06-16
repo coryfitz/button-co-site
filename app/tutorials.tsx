@@ -369,7 +369,12 @@ if __name__ == "__main__":
     main()
 
                 `} language="python" />
-                <Text>When you run the code, your Pico should connect to your Home Assistant</Text>
+                <Text>
+                  Test the code by running it from Thonny; your Pico should connect to your Home Assistant.
+                  <br></br>
+                  <br></br>
+                  When it's working properly, save it as main.py
+                </Text>
             </>
 
           ): (
