@@ -233,7 +233,13 @@ Check that the binary sensor toggles from off to on when the button is pressed
             <>
               <Text className="text-black text-base leading-relaxed">
 
-              Install MQTT on your Home Assistant if you don't already: https://www.home-assistant.io/integrations/mqtt/
+              Requirements: Home Assistant on a Raspberry Pi or other device
+              <br></br>
+              (instructions to install Home Assistant on a Raspberry Pi: https://www.home-assistant.io/installation/raspberrypi/)
+              <br></br>
+              <br></br>
+
+              1. Install MQTT on your Home Assistant if you don't already: https://www.home-assistant.io/integrations/mqtt/
               <br></br>
               Manually enter the MQTT Broker connection details
               <br></br>
@@ -293,6 +299,7 @@ def connect_wifi():
 
 # MQTT connection
 def connect_mqtt():
+    mip.install('umqtt.simple')
     from umqtt.simple import MQTTClient
     client = MQTTClient(MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, MQTT_USER, MQTT_PASSWORD)
     client.connect()
