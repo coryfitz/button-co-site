@@ -239,7 +239,7 @@ Check that the binary sensor toggles from off to on when the button is pressed
               <br></br>
               <br></br>
 
-              1. Install MQTT on your Home Assistant if you don't already: https://www.home-assistant.io/integrations/mqtt/
+              1. Install MQTT on your Home Assistant if you don't have it: https://www.home-assistant.io/integrations/mqtt/
               <br></br>
               Manually enter the MQTT Broker connection details
               <br></br>
