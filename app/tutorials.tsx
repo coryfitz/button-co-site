@@ -238,28 +238,23 @@ Check that the binary sensor toggles from off to on when the button is pressed
               (instructions to install Home Assistant on a Raspberry Pi: https://www.home-assistant.io/installation/raspberrypi/)
               <br></br>
               <br></br>
-
               1. Install MQTT on your Home Assistant if you don't have it: https://www.home-assistant.io/integrations/mqtt/
               <br></br>
               Manually enter the MQTT Broker connection details
               <br></br>
               <br></br>
-
               Click on your name in the bottom left of Home Assistant
               Toggle on advanced mode
               Then, Settings - People - Users
-
-
-
-              1. Install MicroPython by following instructions here: https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
+              2. Install MicroPython by following instructions here: https://www.raspberrypi.com/documentation/microcontrollers/micropython.html
               <br></br>
               (The Button uses a Pico W board, not a Pico 2 or Pico 2 W)
               <br></br>
               <br></br>
-              2. In the Thonny code editor, in the bottom right, select "MicroPython (Raspberry Pi Pico)"
+              3. In the Thonny code editor, in the bottom right, select "MicroPython (Raspberry Pi Pico)"
               <br></br>
               <br></br>
-              3. Use Thonny to enter the following MicroPython code
+              4. Use Thonny to enter the following MicroPython code
               <br></br>
               WIFI_SSID and WIFI_PASSWORD are your wifi network's name and password
               <br></br>
@@ -377,10 +372,10 @@ if __name__ == "__main__":
 
                 `} language="python" />
                 <Text>
-                  Test the code by running it from Thonny; your Pico should connect to your Home Assistant.
+                  5. Test the code by running it from Thonny; your Pico should connect to your Home Assistant.
                   <br></br>
                   <br></br>
-                  When it's working properly, save it as main.py
+                  6. When it's working properly, save it as main.py
                 </Text>
             </>
 
