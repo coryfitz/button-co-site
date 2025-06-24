@@ -384,6 +384,7 @@ if __name__ == "__main__":
             <Text className="text-black">Select a tab.</Text>
           )}
         </View>
+        
 
         {/* Card 3 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
