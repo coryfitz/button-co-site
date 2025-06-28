@@ -391,6 +391,7 @@ if __name__ == "__main__":
 
 
 
+
         {/* Card 3 */}
         <View className="bg-white rounded-2xl p-4 mb-6 shadow-md">
           <Text className="text-center text-2xl font-bold text-black mb-2">
